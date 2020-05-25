@@ -18,28 +18,30 @@ const fruitSchema = new mongoose.Schema({
 
 const Fruit = mongoose.model('Fruit', fruitSchema);
 
-const fruit = new Fruit({
-  name: "Pessego",
-  rating: 6,
-  review: "Never prove it"
+const tangerina = new Fruit({
+  name: "Tangerina",
+  rating: 8,
+  review: "Muito boa"
   
 });
 
-// fruit.save();
+tangerina.save();
 
  const PersonSchema = new mongoose.Schema({
         name: String,
         age: Number,
-        
+        favouriteFruit: fruitSchema
       });
       const Person = mongoose.model('Person', PersonSchema);
       
-      const person = new Person({
-        name: "João",
-        age: 18
-        
-      }
-      );
+      // const person = new Person({
+      //   name: "Ana",
+      //   age: 14, 
+      //   favouriteFruit : uva
+      // }
+      // );
+
+      // person.save();
 
 Fruit.find(function (err, fruits) {
     if(err){
@@ -56,17 +58,17 @@ Fruit.find(function (err, fruits) {
     }
 });
 
-// Fruit.updateOne({_id:"5ecc1e99b3a92a13fc930fc2"}, {name: "Ananas", review: "Very good on pizza"} , function (err) { 
+Person.updateOne({name:"João"}, {favouriteFruit: tangerina} , function (err) { 
 
-//   if (err) {
-//     console.log(err);
+  if (err) {
+    console.log(err);
     
-//   }else{
-//     console.log("Update = Success");
+  }else{
+    console.log("Update = Success");
     
-//   }
+  }
 
-//  });
+ });
 
 // Fruit.deleteOne({_id:"5ecc1e99b3a92a13fc930fc2"}, function (err) { 
 
